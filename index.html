@@ -92,6 +92,75 @@
     </footer>
 
     <!-- Chatbot JavaScript (must be at the end) -->
-    <script src="dist/bundle.js"></script>
+
+
+    <elevenlabs-convai agent-id="agent_3301kgkt94shefwsdzfb1cv3et3x"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <script>
+        const observedRoots = new WeakSet();
+
+        const removeElevenLabsBranding = root => {
+            if (!root || !root.querySelectorAll) {
+                return;
+            }
+
+            root.querySelectorAll('p.whitespace-nowrap').forEach(el => {
+                if (el.textContent.includes('ElevenLabs')) {
+                    el.remove();
+                } else {
+                    el.querySelectorAll('span.opacity-30').forEach(span => span.remove());
+                    if (!el.textContent.trim()) {
+                        el.remove();
+                    }
+                }
+            });
+        };
+
+        const attachObserver = root => {
+            if (!root || observedRoots.has(root) || !root.querySelectorAll) {
+                return;
+            }
+
+            observedRoots.add(root);
+            domObserver.observe(root, { childList: true, subtree: true });
+            removeElevenLabsBranding(root);
+        };
+
+        const domObserver = new MutationObserver(mutations => {
+            removeElevenLabsBranding(document);
+
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (!(node instanceof Element)) {
+                        return;
+                    }
+
+                    removeElevenLabsBranding(node);
+
+                    if (node.shadowRoot) {
+                        attachObserver(node.shadowRoot);
+                    }
+
+                    node.querySelectorAll && node.querySelectorAll('*').forEach(child => {
+                        if (child.shadowRoot) {
+                            attachObserver(child.shadowRoot);
+                        }
+                    });
+                });
+            });
+        });
+
+        attachObserver(document);
+        attachObserver(document.body);
+
+        setInterval(() => {
+            removeElevenLabsBranding(document);
+            document.querySelectorAll('elevenlabs-convai').forEach(element => {
+                if (element.shadowRoot) {
+                    attachObserver(element.shadowRoot);
+                }
+            });
+        }, 500);
+    </script>
 </body>
 </html>
