@@ -1,100 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Demo Site</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Chatbot CSS -->
-    <link rel="stylesheet" href="dist/styles.css">
-    
-    <!-- Chatbot Configuration -->
-    <script>
-        window.API_BASE_URL = 'https://84tzb2l6ri.execute-api.us-east-1.amazonaws.com/api';  // Replace with your actual API URL
-        window.API_KEY ='QUyv62nxTz5UebIKVMNAY9Con3IlfksN2SyvVJS0';                 // Replace with your actual API key
-        window.FILE_UPLOAD_API_URL = 'https://wge2zm1qt0.execute-api.us-east-1.amazonaws.com/prod';  // File upload API URL
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education Planner Landing</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="radius-x-logo.svg" alt="RadiusX Logo" class="logo-img">
-            </div>
-            <ul class="nav-links">
-                <li><span>Home</span></li>
-                <li><span>Academics</span></li>
-                <li><span>Admissions</span></li>
-                <li><span>Research</span></li>
-                <li><span>Campus Life</span></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="top-strip">
+      <div class="top-strip-inner">
+        <a href="#">SIGN IN</a>
+        <a href="#">CREATE ACCOUNT</a>
+      </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to RadiusX University </h1>
-            <p>Empowering minds, shaping futures</p>
-            <button class="cta-button">Learn More</button>
+    <nav class="main-nav">
+      <div class="nav-inner">
+        <div class="left-pills">
+          <button class="pill green">Plan</button>
+          <button class="pill blue">Search</button>
+          <button class="pill yellow">Path</button>
+          <button class="pill pink">Apply</button>
         </div>
-    </section>
 
-    <!-- Featured Programs -->
-    <section class="programs" id="academics">
-        <h2>Featured Programs</h2>
-        <div class="program-cards">
-            <div class="card">
-                <h3>Computer Science</h3>
-                <p>Explore the world of technology and innovation</p>
-            </div>
-            <div class="card">
-                <h3>Business Administration</h3>
-                <p>Develop leadership and management skills</p>
-            </div>
-            <div class="card">
-                <h3>Engineering</h3>
-                <p>Create solutions for tomorrow's challenges</p>
-            </div>
+        <div class="brand">
+          <img src="image.png" alt="EducationPlannerBC" class="brand-image" />
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>123 University Ave</p>
-                <p>Vancouver, British Columbia</p>
-                <p>Phone: (123) 123-1234</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#careers">Careers</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <span class="social-icon"><i class="fab fa-facebook"></i></span>
-                    <span class="social-icon"><i class="fab fa-twitter"></i></span>
-                    <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                    <span class="social-icon"><i class="fab fa-linkedin"></i></span>
-                </div>
-            </div>
+        <div class="right-actions">
+          <button class="btn help">Help</button>
+          <button class="btn list">Go to My List <i class="fa-solid fa-star"></i></button>
         </div>
-    </footer>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Chatbot JavaScript (must be at the end) -->
+  <main class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to EducationPlannerBC.</h1>
+      <h2>Your journey starts here.</h2>
 
+      <div class="hero-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span></span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
 
-    <elevenlabs-convai
+      <div class="hero-cards">
+        <div class="hero-card">
+          <button class="pill green lg">Plan</button>
+          <p>Plan your journey to post-secondary.</p>
+        </div>
+        <div class="hero-card">
+          <button class="pill blue lg">Search</button>
+          <p>Search for programs and institutions.</p>
+        </div>
+        <div class="hero-card">
+          <button class="pill yellow lg">Find Your Path</button>
+          <p>Find your education and career path.</p>
+        </div>
+        <div class="hero-card">
+          <button class="pill pink lg">Apply</button>
+          <p>Apply to your chosen program(s).</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Your widget -->
+  <elevenlabs-convai
         agent-id="agent_7701kjpkxqhwfzdvnhr2ya403dn4"
         style="position: fixed; top: 140px; right: 10px;">
     </elevenlabs-convai>
