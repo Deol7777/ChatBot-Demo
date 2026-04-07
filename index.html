@@ -84,15 +84,13 @@
                 return;
             }
 
-            root.querySelectorAll('p.whitespace-nowrap').forEach(el => {
-                if (el.textContent.includes('ElevenLabs')) {
-                    el.remove();
-                } else {
-                    el.querySelectorAll('span.opacity-30').forEach(span => span.remove());
-                    if (!el.textContent.trim()) {
-                        el.remove();
-                    }
-                }
+            root.querySelectorAll('p.whitespace-nowrap').forEach(p => {
+              const el = p.querySelector('a');
+              const text = (el?.textContent || p.textContent || '').trim();
+
+              if (text.includes('ElevenAgents')) {
+                p.remove(); // remove the outer <p> container
+              }
             });
         };
 
